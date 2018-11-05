@@ -3,6 +3,7 @@
 import subprocess
 import sys
 import difflib
+import shutil
 
 def exec_exercice(exo, args):
 	cmd = ['python'] + [exo] + args
@@ -46,7 +47,12 @@ advanced_args = [['0', '3', '1', '3', '4', '5'], ['']]
 if sys.argv[1] is not None:
 	path_test = sys.argv[1]
 
-gen_test = [['']]
+gen_test = ['01_basics_02/test.py', '01_basics_03/test.py', '01_basics_04/test.py', '01_basics_05/test.py', 
+			'02_iterators_01/test.py', '02_iterators_02/test.py', '02_iterators_03/test.py', '02_iterators_04/test.py',
+			'03_list_comprehension_01/test.py', '03_list_comprehension_02/test.py', '03_list_comprehension_03/test.py']
+
+for a in gen_test:
+	shutil.copyfile(path_corrige+a, path_test+a)
 
 for i, n in zip(basics_exercice_list, basics_args_list):
 	print('\nExercice '+ i[:i.index('/')])
